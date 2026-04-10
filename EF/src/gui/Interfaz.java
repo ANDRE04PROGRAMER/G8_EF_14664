@@ -68,7 +68,7 @@ public class Interfaz extends JFrame implements ActionListener {
 		{
 			btnNewButton = new JButton("REPORTAR");
 			btnNewButton.addActionListener(this);
-			btnNewButton.setBounds(10, 60, 111, 23);
+			btnNewButton.setBounds(10, 60, 89, 23);
 			contentPane.add(btnNewButton);
 		}
 		{
