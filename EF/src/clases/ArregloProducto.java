@@ -25,4 +25,12 @@ public Producto Obtener(int x) {
 	return Pro.get(x);
 }
 
+public Producto Buscar(int codigo) {
+	for (int i = 0; i< Tamaño();i++) {
+		if(Obtener(i).getCodigo() == codigo) {
+			return Obtener(i);
+		}
+	}
+	return null;
+}
 }

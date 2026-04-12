@@ -8,8 +8,10 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import clases.ArregloProducto;
+import clases.Producto;
 
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.crypto.AEADBadTagException;
 import javax.swing.JButton;
@@ -24,7 +26,7 @@ public class Interfaz extends JFrame implements ActionListener {
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JLabel lblNewLabel;
-	private JTextField textField;
+	private JTextField txtProducto;
 	private JButton btnNewButton;
 	private JTextArea txtS;
 
@@ -60,15 +62,15 @@ public class Interfaz extends JFrame implements ActionListener {
 			contentPane.add(lblNewLabel);
 		}
 		{
-			textField = new JTextField();
-			textField.setBounds(89, 22, 86, 20);
-			contentPane.add(textField);
-			textField.setColumns(10);
+			txtProducto = new JTextField();
+			txtProducto.setBounds(89, 22, 86, 20);
+			contentPane.add(txtProducto);
+			txtProducto.setColumns(10);
 		}
 		{
 			btnNewButton = new JButton("REPORTAR");
-			btnNewButton.addActionListener(this);
 			btnNewButton.setBounds(10, 60, 89, 23);
+			btnNewButton.addActionListener(this);
 			contentPane.add(btnNewButton);
 		}
 		{
@@ -80,17 +82,28 @@ public class Interfaz extends JFrame implements ActionListener {
 				scrollPane.setViewportView(txtS);
 			}
 		}
+		{
+			btnBuscar = new JButton("BUSCAR");
+			btnBuscar.addActionListener(this);
+			btnBuscar.setBounds(120, 60, 79, 23);
+			contentPane.add(btnBuscar);
+		}
 		
 	}
 	
 	
 	public void actionPerformed(ActionEvent e) {
+		if (e.getSource() == btnBuscar) {
+			do_btnBuscar_actionPerformed(e);
+		}
 		if (e.getSource() == btnNewButton) {
 			do_btnNewButton_actionPerformed(e);
 		}
 	}
+	/*-----------------------*/
 	ArregloProducto ae =new ArregloProducto();
 	private JScrollPane scrollPane;
+	private JButton btnBuscar;
 	protected void do_btnNewButton_actionPerformed(ActionEvent e) {
 		txtS.setText("");
 		Listado();
@@ -108,5 +121,14 @@ public class Interfaz extends JFrame implements ActionListener {
 	
 	void Imprimir(String s) {
 		txtS.append(s+"\n");
+	}
+	protected void do_btnBuscar_actionPerformed(ActionEvent e) {
+		int codigo = Integer.parseInt(txtProducto.getText());
+		Producto p = ae.Buscar(codigo);
+		if (p != null) {
+			JOptionPane.showMessageDialog(this, "Si existe");
+		}else {
+			JOptionPane.showMessageDialog(this, "No existe");
+		}
 	}
 }
