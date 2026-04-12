@@ -1,0 +1,6 @@
+INDEX VERSION 1.134+C:\Users\Usuario\OneDrive\Escritorio\G8_EF_14664-main\.metadata\.plugins\org.eclipse.jdt.core
+88012553.index
+887495228.index
+2287358243.index
+3327560696.index
+1865797976.index
